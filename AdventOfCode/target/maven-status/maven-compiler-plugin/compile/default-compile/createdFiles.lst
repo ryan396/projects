@@ -1,0 +1,3 @@
+com\sg\adventofcode\interfaces\Methods.class
+com\sg\adventofcode\implementation\MethodsImp.class
+com\sg\adventofcode\DayOne.class
