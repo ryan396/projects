@@ -1,0 +1,19 @@
+.btn {
+    background-color:#05368B;
+    font-weight: bold;
+    font-size: 1.0em;
+}
+
+#timer {
+    font-size: 4.0em;
+    color: #EDF5E1;
+}
+
+body {
+    background-color: #5CDB95;
+}
+
+#container {
+    margin:auto;
+    font-weight: bold;
+}
