@@ -1,0 +1,32 @@
+div.row { 
+    border-bottom: 1px;
+  }
+
+
+#operator { 
+    background-color: #F7B15C;
+    border: 1px solid #D3D3D3;
+    border-radius: 4px;
+}
+
+#num {
+    background-color: #F5F5F5;
+    border: 1px solid #D3D3D3;
+    border-radius: 4px;
+}
+
+#result {
+    padding: 40px;
+    background-color: #D3D3D3;
+    border-radius: 4px;
+}
+
+#container {
+    margin-top: 25%;
+    max-width: 500px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 2em;
+    border-radius: 4px;
+    border: 1px solid #D3D3D3 ;
+}
