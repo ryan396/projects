@@ -6,55 +6,61 @@ class Calculator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      result: " "
+      result: ""
     };
   }
 
   changeResult = (e) => {
     this.setState(prevState => { 
-      return {result : prevState.result + e}
+      if(e === "CE") {
+        return {result : ""}
+      } else if (e === "="){
+        return {result : eval(prevState.result)}
+      } else {
+        return {result : prevState.result + e}
+      }
       })
     }
 
   render() {
     return (
 
-      <div id="container" class="container-fluid">
+      <div id="container" className="container-fluid">
         <div className="row" id="row1">
           <div id="result" className="col">{this.state.result}</div>
         </div>
 
-        <div class="row" id="row2">
-          <button name="CE" type="button" id="num" onClick={e => this.changeResult(e.target.name)} class="col-6">CE</button>
-          <button name="%" id="num" onClick={e => this.changeResult(e.target.name)} class="col-3">%</button>
-          <div id="operator" onclick="grabValue('/')" class="col-3">/</div>
+        <div className="row" id="row2">
+          <button name="CE" type="button" id="num" onClick={e => this.changeResult(e.target.name)} className="col-6">CE</button>
+          <button name="%" id="num" onClick={e => this.changeResult(e.target.name)} className="col-3">%</button>
+          <button name="/" id="operator" onClick={e => this.changeResult(e.target.name)} className="col-3">/</button>
         </div>
 
-        <div class="row" id="row3">
-          <div id="num" onclick="grabValue('7')" class="col-3">7</div>
-          <div id="num" onclick="grabValue('8')" class="col-3">8</div>
-          <div id="num" onclick="grabValue('9')" class="col-3">9</div>
-          <div id="operator" onclick="grabValue('x')" class="col-3">X</div>
+        <div className="row" id="row3">
+          <button name="7" id="num" onClick={e => this.changeResult(e.target.name)} className="col-3">7</button>
+          <button name="8" id="num" onClick={e => this.changeResult(e.target.name)} className="col-3">8</button>
+          <button name="9" id="num" onClick={e => this.changeResult(e.target.name)} className="col-3">9</button>
+          <button name="x" id="operator" onClick={e => this.changeResult(e.target.name)} className="col-3">X</button>
         </div>
 
-        <div class="row" id="row4">
-          <div id="num" onclick="grabValue(4)" class="col-3">4</div>
-          <div id="num" onclick="grabValue(5)" class="col-3">5</div>
-          <div id="num" onclick="grabValue(6)" class="col-3">6</div>
-          <div id="operator" onclick="grabValue('-')" class="col-3">-</div>
+        <div className="row" id="row4">
+          <button name="4" id="num" onClick={e => this.changeResult(e.target.name)} className="col-3">4</button>
+          <button name="5" id="num" onClick={e => this.changeResult(e.target.name)} className="col-3">5</button>
+          <button name="6" id="num" onClick={e => this.changeResult(e.target.name)} className="col-3">6</button>
+          <button name="-" id="operator" onClick={e => this.changeResult(e.target.name)} className="col-3">-</button>
         </div>
 
-        <div class="row" id="row5">
-          <div id="num" onclick="grabValue('1')" class="col-3">1</div>
-          <div id="num" onclick="grabValue('2')" class="col-3">2</div>
-          <div id="num" onclick="grabValue('3')" class="col-3">3</div>
-          <div id="operator" onclick="grabValue('+')" class="col-3">+</div>
+        <div className="row" id="row5">
+          <button name="1" id="num" onClick={e => this.changeResult(e.target.name)} className="col-3">1</button>
+          <button name="2" id="num" onClick={e => this.changeResult(e.target.name)} className="col-3">2</button>
+          <button name="3" id="num" onClick={e => this.changeResult(e.target.name)} className="col-3">3</button>
+          <button name="+" id="operator" onClick={e => this.changeResult(e.target.name)} className="col-3">+</button>
         </div>
 
-        <div class="row" id="row6">
-          <div id="num" class="col-6">0</div>
-          <div id="num" class="col-3">.</div>
-          <div id="operator" onclick="calculate('=')" class="col-3">=</div>
+        <div className="row" id="row6">
+          <button name="0" id="num" className="col-6">0</button>
+          <button name="." id="num" className="col-3">.</button>
+          <button name="=" id="operator" onClick={e => this.changeResult(e.target.name)} className="col-3">=</button>
         </div>
 
       </div>
