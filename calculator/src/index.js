@@ -11,14 +11,21 @@ class Calculator extends React.Component {
   }
 
   changeResult = (e) => {
-    this.setState(prevState => { 
-      if(e === "CE") {
-        return {result : ""}
-      } else if (e === "="){
-        return {result : eval(prevState.result)}
-      } else {
-        return {result : prevState.result + e}
-      }
+      this.setState(prevState => {
+        if (prevState.result === "INV") {
+          this.state.result = ""
+        }
+        if (e === "CE") {
+          return { result: "" }
+        } else if (e === "=") {
+          try {
+            return {result: eval(prevState.result)}
+          } catch {
+            return {result: "INV"}
+          }
+        } else {
+          return { result: prevState.result + e }
+        }
       })
     }
 
