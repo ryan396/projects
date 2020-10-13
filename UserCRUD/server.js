@@ -5,7 +5,7 @@ const app = express();
 connectDB();
 app.use(express.json({extended: false}));
 app.use('/api/', require('./Api/User'));
-const Port = process.env.Port || 3000;
+const Port = process.env.Port || 8000;
 
 app.listen(Port, ()=>console.log("Server started"));
 
