@@ -8,12 +8,12 @@ function EditUserForm(props){
     const [user, setUser] = useState(props.currentUser)
 
     const handleInputChangeFirstName = (event) => {
-        user.firstname = event.target.value;
+        user.firstName = event.target.value;
     }
 
 
     const handleInputChangeLastName = (event) => {
-        user.lastname = event.target.value;
+        user.lastName = event.target.value;
     }
 
     return (
@@ -27,15 +27,15 @@ function EditUserForm(props){
             <label>Name</label>
             <input
                 type="text"
-                name="name"
+                firstname="firstName"
                 value={user.firstName}
                 onChange={handleInputChangeFirstName}
             />
-            <label>Username</label>
+            <label>Last Name</label>
             <input
                 type="text"
-                name="username"
-                value={user.firstName}
+                name="lastName"
+                value={user.lastName}
                 onChange={handleInputChangeLastName}
             />
             <button>Update user</button>

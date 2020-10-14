@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useReducer, useState } from 'react'
 import UserTable from './tables/UserTable'
 import AddUserForm from './forms/AddUserForm';
 import EditUserForm from './forms/EditUserForm'
@@ -7,13 +7,12 @@ function App() {
 
   const [users, setUsers] = useState([]);
   const [editing, setEditing] = useState(false);
-  const initialFormState = { firstName: "", lastName: "" }
+  const initialFormState = { _id: "", firstName: "", lastName: "" }
   const [currentUser, setCurrentUser] = useState(initialFormState);
 
-  function editRow(user) {
+ function editRow(user){
     setEditing(true)
-    setCurrentUser({ id: user._id, name: user.name, username: user.username })
-
+    setCurrentUser(user);   
   }
 
   function currentUserFind(id) {
@@ -27,7 +26,8 @@ function App() {
   }
 
   function updateUser(id, updatedUser) {
-    fetch('/makeNew', {
+    setEditing(false);
+    fetch('/update/' + id, {
       method: 'put',
       headers: {
         'Accept': 'application/json',
@@ -91,8 +91,9 @@ function App() {
             <div>
               <h2>Edit user</h2>
               <EditUserForm
+                editing={editing}
                 setEditing={setEditing}
-                currentUserFind={currentUserFind}
+                currentUser={currentUser}
                 updateUser={updateUser}
               />
             </div>
