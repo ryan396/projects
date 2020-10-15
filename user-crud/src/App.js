@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react'
+import React, { useState } from 'react'
 import UserTable from './tables/UserTable'
 import AddUserForm from './forms/AddUserForm';
 import EditUserForm from './forms/EditUserForm'
@@ -14,7 +14,7 @@ function App() {
     setEditing(true)
     setCurrentUser(user);   
   }
-
+//for future use, if needed. will finda specific user
   function currentUserFind(id) {
     fetch("/fetch/" + id, {
       method: 'GET',

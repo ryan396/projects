@@ -18,9 +18,19 @@ function AddUserForm(props) {
 		<form
 			onSubmit={(event) => {
 				event.preventDefault();
-				console.log(user.lastname);
-				props.AddUser(user.firstname, user.lastname);
-				setUser(initialFormState);
+				try {
+					if ((typeof user.firstName === 'string') & (typeof user.lastName === "string")) {
+						console.log(user.lastname);
+						props.AddUser(user.firstname, user.lastname);
+						setUser(initialFormState);
+					} else {
+						alert('please enter valid first and last name');
+					}
+				} catch (error) {
+					console.log(error);
+				}
+
+
 			}}
 		>
 			<label>First Name</label>

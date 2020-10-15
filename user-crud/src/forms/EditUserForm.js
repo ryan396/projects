@@ -19,9 +19,17 @@ function EditUserForm(props){
     return (
         <form
             onSubmit={(event) => {
-                event.preventDefault()
-
-                props.updateUser(user._id, user)
+                event.preventDefault();
+                console.log(typeof (''));
+                try {
+					if ((user.firstName !== "" & user.lastName !== "" & typeof user.firstName === 'string' & typeof user.lastName === "string")) {
+                        props.updateUser(user._id, user);
+					} else {
+						alert('please enter valid first and last name');
+					}
+				} catch (error) {
+					console.log(error);
+				}
             }}
         >
             <label>Name</label>
