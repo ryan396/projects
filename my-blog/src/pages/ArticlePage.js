@@ -3,6 +3,9 @@ import ArticlesList from '../components/ArticlesList';
 import articles from './article-content';
 import articleContent from './article-content';
 import NotFoundPage from './NotFoundPage';
+import CommentsList from '../components/CommentsList';
+import UpvotesSection from '../components/UpvoteSection';
+import AddCommentForm from '../components/AddCommentForm';
 
 const ArticlePage = ({ match }) => {
 
@@ -10,7 +13,13 @@ const ArticlePage = ({ match }) => {
     const article = articleContent.find(article => article.name === name);
 
     useEffect(() => {
-        setArticleInfo({ upvotes: 3 });
+        const fetchData = async () => {
+            const result = await fetch (`/api/articles/${name}`);
+            const body = await result.json();
+            setArticleInfo(body);
+        }
+        fetchData();
+       
     }, [name]);
 
     const [articleInfo, setArticleInfo] = useState({ upvotes: 0, comments: []});    
@@ -23,10 +32,12 @@ const ArticlePage = ({ match }) => {
         <React.Fragment>
             <div>
                 <h1>{article.title}</h1>
-                <p>This post has been upvoted {articleInfo.upvotes} times</p>
+                <UpvotesSection articleName={name} upvotes={articleInfo.upvotes} setArticleInfo={setArticleInfo} />
                 {article.content.map((paragraph, key) => (
                     <p key={key}>{paragraph}</p>
                 ))}
+                <CommentsList comments={articleInfo.comments} />
+                <AddCommentForm articleName={name} setArticleInfo={setArticleInfo} />
             <h3>Other Articles</h3>
             <ArticlesList articles={otherArticles} />
             </div>
