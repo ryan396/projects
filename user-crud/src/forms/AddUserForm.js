@@ -19,8 +19,7 @@ function AddUserForm(props) {
 			onSubmit={(event) => {
 				event.preventDefault();
 				try {
-					if ((typeof user.firstName === 'string') & (typeof user.lastName === "string")) {
-						console.log(user.lastname);
+					if ((user.firstname !== "" & user.lastname !== "" & typeof user.firstname === 'string' & typeof user.lastname === "string")) {
 						props.AddUser(user.firstname, user.lastname);
 						setUser(initialFormState);
 					} else {

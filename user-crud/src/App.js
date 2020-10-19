@@ -16,7 +16,7 @@ function App() {
   }
 //for future use, if needed. will finda specific user
   function currentUserFind(id) {
-    fetch("/fetch/" + id, {
+    fetch("/api/fetch/" + id, {
       method: 'GET',
     })
       .then((response) => response.json())
@@ -27,7 +27,7 @@ function App() {
 
   function updateUser(id, updatedUser) {
     setEditing(false);
-    fetch('/update/' + id, {
+    fetch('/api/update/' + id, {
       method: 'put',
       headers: {
         'Accept': 'application/json',
@@ -42,7 +42,7 @@ function App() {
   }
 
   function useFetch() {
-    fetch("/fetch", {
+    fetch("/api/fetch", {
       method: 'GET',
     })
       .then((response) => response.json())
@@ -52,10 +52,10 @@ function App() {
   }
 
   function DeleteUser(id) {
-    fetch(`/delete/` + id, {
+    fetch(`/api/delete/` + id, {
       method: 'delete',
     })
-    fetch("/fetch", {
+    fetch("/api/fetch", {
       method: 'GET',
     })
       .then((response) => response.json())
@@ -66,7 +66,7 @@ function App() {
 
 
   function AddUser(firstname, lastname) {
-    fetch('/makeNew', {
+    fetch('/api/makeNew', {
       method: 'post',
       headers: {
         'Accept': 'application/json',

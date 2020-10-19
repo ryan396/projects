@@ -20,7 +20,6 @@ function EditUserForm(props){
         <form
             onSubmit={(event) => {
                 event.preventDefault();
-                console.log(typeof (''));
                 try {
 					if ((user.firstName !== "" & user.lastName !== "" & typeof user.firstName === 'string' & typeof user.lastName === "string")) {
                         props.updateUser(user._id, user);
